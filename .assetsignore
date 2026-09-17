@@ -1,0 +1,6 @@
+wrangler.jsonc
+.assetsignore
+.git
+.gitignore
+*.md
+apercu.html

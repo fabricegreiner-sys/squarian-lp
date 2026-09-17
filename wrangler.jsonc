@@ -1,0 +1,10 @@
+{
+  // Déploiement direct depuis ce dossier :  npx wrangler deploy
+  // Le Worker ne contient aucun code : uniquement des fichiers statiques.
+  // Cloudflare lit _headers au déploiement et applique les en-têtes.
+  "name": "squarian-lp",
+  "compatibility_date": "2026-09-17",
+  "assets": {
+    "directory": "./"
+  }
+}
