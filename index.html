@@ -164,6 +164,39 @@ footer{padding:34px 0 52px;font-size:.87rem;color:var(--ink-soft)}
 .foot-links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:10px}
 footer a{color:var(--ink-soft)}
 
+
+/* bande partenaires */
+.partners{padding:46px 0;background:var(--wash);border-bottom:1px solid var(--line);text-align:center}
+.partners .eyebrow{margin-bottom:1.5rem}
+.logos{display:flex;flex-wrap:wrap;gap:34px 46px;align-items:center;justify-content:center}
+.logos img{height:30px;width:auto;filter:grayscale(1);opacity:.62;transition:filter .2s,opacity .2s}
+.logos img:hover{filter:grayscale(0);opacity:1}
+.partners .fine{font-size:.82rem;color:var(--ink-soft);margin:1.8rem auto 0;max-width:58ch}
+
+/* schéma d'écran de suivi */
+.dash{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:26px 0 8px;
+      background:#fff;box-shadow:0 14px 40px -30px rgba(12,7,44,.5)}
+.dash .head{background:var(--wash);border-bottom:1px solid var(--line);padding:11px 16px;
+            display:flex;justify-content:space-between;align-items:center;
+            font:700 .82rem "Space Grotesk",system-ui,sans-serif;color:var(--ink-soft)}
+.dash .head .pct{color:var(--blue)}
+.dash table{width:100%;border-collapse:collapse;font-size:.88rem}
+.dash td{padding:11px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+.dash tr:last-child td{border-bottom:0}
+.dash td.who{font-weight:700;width:34%}
+.dash td.what{color:var(--ink-soft)}
+.dash td.st{width:23%;text-align:right;white-space:nowrap}
+.tagx{display:inline-block;border-radius:999px;padding:3px 11px;font-size:.76rem;font-weight:700}
+.tagx.ok{background:#E3F3E8;color:#1E6B3A}
+.tagx.wait{background:#FDF3E6;color:#A85B00}
+.tagx.late{background:var(--accent-soft);color:#B7381E}
+.legend{font-size:.8rem;color:var(--ink-soft);font-style:italic;margin:0 0 1.3em}
+@media (max-width:620px){
+  .dash td{padding:9px 11px;font-size:.82rem}
+  .logos{gap:24px 30px}
+  .logos img{height:24px}
+}
+
 @media (max-width:920px){
   .hero-grid{grid-template-columns:1fr;gap:38px}
   .cards{grid-template-columns:1fr}
@@ -182,7 +215,7 @@ footer a{color:var(--ink-soft)}
 <body>
 
 <div class="maquette">
-  <b>MAQUETTE</b> — proposition de refonte soumise à validation. Plusieurs affirmations doivent être confirmées avant toute mise en ligne publique.
+  <b>MAQUETTE</b> — proposition soumise à validation. Logos partenaires appelés depuis squarian.com, écran de suivi schématisé. Plusieurs affirmations restent à confirmer avant publication.
 </div>
 
 <header>
@@ -247,6 +280,28 @@ footer a{color:var(--ink-soft)}
   </div>
 </section>
 
+<!-- ─────────────── ÉCOSYSTÈME ─────────────── -->
+<section class="partners">
+  <div class="wrap">
+    <p class="eyebrow">Notre écosystème et nos soutiens</p>
+    <div class="logos">
+      <img src="https://www.squarian.com/assets/logo-bpifrance-aGwxjTeG.png" alt="Bpifrance" loading="lazy" height="30">
+      <img src="https://www.squarian.com/assets/logo-french-tech-Dzcs4lHM.png" alt="French Tech" loading="lazy" height="30">
+      <img src="https://www.squarian.com/assets/logo-village-ca-M8dQslaW.png" alt="Le Village by CA" loading="lazy" height="30">
+      <img src="https://www.squarian.com/assets/logo-finance-innovation-CT0M3oV3.png" alt="Finance Innovation" loading="lazy" height="30">
+      <img src="https://www.squarian.com/assets/logo-opco-atlas-DBrTZ3bY.png" alt="OPCO Atlas" loading="lazy" height="30">
+      <img src="https://www.squarian.com/assets/logo-aer-CFXUIonw.png" alt="Agence économique régionale Bourgogne-Franche-Comté" loading="lazy" height="30">
+      <img src="https://www.squarian.com/assets/logo-gbm-BvhnK8ag.png" alt="Grand Besançon Métropole" loading="lazy" height="30">
+      <img src="https://www.squarian.com/assets/logo-temis-CaRLxUrr.png" alt="TEMIS" loading="lazy" height="30">
+      <img src="https://www.squarian.com/assets/logo-bge-0ISI_wI_.png" alt="BGE" loading="lazy" height="30">
+      <img src="https://www.squarian.com/assets/logo-deca-bfc-dKYXJR0O.png" alt="DECA Bourgogne-Franche-Comté" loading="lazy" height="30">
+      <img src="https://www.squarian.com/assets/logo-pmt-DCionD7-.png" alt="Pôle des Microtechniques" loading="lazy" height="30">
+    </div>
+    <p class="fine">Partenaires de l'écosystème et soutiens au développement de Squarian.
+      Les références clients seront ajoutées à mesure des premiers déploiements.</p>
+  </div>
+</section>
+
 <!-- ─────────────── AGITATION ─────────────── -->
 <section class="pad">
   <div class="wrap">
@@ -308,6 +363,19 @@ footer a{color:var(--ink-soft)}
           sans créer de compte. <strong>S'il tarde, il est relancé automatiquement.</strong>
           Vous suivez l'avancement sur un seul écran : qui a répondu, qui manque, quelle pièce bloque.</p>
         <p class="punch">Vous ne relancez plus. Vous arbitrez.</p>
+
+        <p class="legend">Schéma de principe de l'écran de suivi — représentation, pas une capture du produit.</p>
+        <div class="dash" role="img" aria-label="Schéma d'un écran de suivi de collecte : six partenaires, statut de chaque pièce attendue">
+          <div class="head"><span>Collecte — Renouvellement des attestations 2026</span><span class="pct">4 / 6 reçues</span></div>
+          <table>
+            <tr><td class="who">Clinique du Parc</td><td class="what">Attestation URSSAF</td><td class="st"><span class="tagx ok">Reçu</span></td></tr>
+            <tr><td class="who">Sodexo Restauration</td><td class="what">Assurance RC pro</td><td class="st"><span class="tagx ok">Reçu</span></td></tr>
+            <tr><td class="who">Blanchisserie Morand</td><td class="what">KBIS + RIB</td><td class="st"><span class="tagx wait">Relancé hier</span></td></tr>
+            <tr><td class="who">Transports Vuillemin</td><td class="what">Attestation fiscale</td><td class="st"><span class="tagx ok">Reçu</span></td></tr>
+            <tr><td class="who">Pharmacie centrale</td><td class="what">Certification ISO</td><td class="st"><span class="tagx late">3 relances</span></td></tr>
+            <tr><td class="who">Ambulances Béatrice</td><td class="what">Assurance véhicules</td><td class="st"><span class="tagx ok">Reçu</span></td></tr>
+          </table>
+        </div>
       </div>
     </div>
 
