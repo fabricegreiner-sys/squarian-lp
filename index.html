@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ════════════════════════════════════════════════════════════════════
+     Squarian — landing page « collecte documentaire sécurisée »
+     MAQUETTE. Page autonome, un seul fichier, aucune dépendance.
+     Les affirmations à valider sont listées dans landing-page-collecte.md
+     Retirer le bandeau .maquette avant toute mise en ligne publique.
+     ════════════════════════════════════════════════════════════════════ -->
+
+<title>Collecte de pièces justificatives sécurisée — Squarian</title>
+<meta name="description" content="Vos pièces justificatives arrivent seules : chiffrées, vérifiées, tracées. Collecte documentaire automatisée pour EHPAD, CHU, organismes financeurs et projets multipartenaires. Hébergement en France.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Squarian">
+<meta property="og:title" content="Vos pièces justificatives arrivent seules — Squarian">
+<meta property="og:description" content="Vous demandez une fois. Squarian relance, vérifie l'identité du déposant, et vous laisse une preuve horodatée. Hébergé en France.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#0C072C; --ink-soft:#505D95; --line:#E4E6F1; --paper:#FFFFFF;
+  --accent:#FF6F52; --accent-soft:#FFF2F0; --blue:#2E26C0;
+  --wash:#F4F6FA; --wash-blue:#F5F9FF; --lav:#DEE1F8;
+  --r:12px; --max:1120px; --narrow:820px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Mulish,system-ui,-apple-system,sans-serif;color:var(--ink);
+     background:var(--paper);line-height:1.66;-webkit-font-smoothing:antialiased;font-size:17px}
+h1,h2,h3{font-family:"Space Grotesk",system-ui,sans-serif;font-weight:700;line-height:1.14;margin:0 0 .5em}
+h1{font-size:clamp(2.1rem,5.4vw,3.4rem);letter-spacing:-.025em}
+h2{font-size:clamp(1.5rem,3.6vw,2.1rem);letter-spacing:-.015em}
+h3{font-size:1.14rem;letter-spacing:-.005em}
+p{margin:0 0 1.05em}
+a{color:var(--blue)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.narrow{max-width:var(--narrow)}
+.eyebrow{font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+         color:var(--ink-soft);margin:0 0 1rem}
+
+/* bandeau maquette — à retirer avant publication */
+.maquette{background:#1F1B3D;color:#fff;font-size:.82rem;text-align:center;padding:9px 20px;
+          letter-spacing:.02em}
+.maquette b{color:#FFB3A3}
+
+/* en-tête */
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);
+       backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk",system-ui,sans-serif;
+       font-weight:700;font-size:1.15rem;text-decoration:none;color:var(--ink)}
+.mark{width:26px;height:26px;border-radius:6px;background:var(--ink);position:relative;flex:none}
+.mark::after{content:"";position:absolute;inset:6px;border:2.5px solid var(--accent);border-radius:3px}
+.btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:var(--r);
+     padding:13px 26px;font:700 1rem Mulish,system-ui,sans-serif;text-decoration:none;
+     white-space:nowrap;transition:filter .15s}
+.btn:hover{filter:brightness(.93)}
+.btn.sm{padding:10px 20px;font-size:.94rem}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);font-weight:600}
+.btn.lg{padding:17px 38px;font-size:1.08rem}
+
+/* hero */
+.hero{background:
+   radial-gradient(1000px 460px at 8% -18%, var(--lav) 0%, transparent 62%),
+   radial-gradient(820px 400px at 92% -8%, var(--accent-soft) 0%, transparent 58%),
+   linear-gradient(180deg,#fff 0%,var(--wash-blue) 100%);
+   padding:76px 0 68px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero p.sub{font-size:1.14rem;color:#3B3766;max-width:54ch}
+.hero p.sub strong{color:var(--ink)}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:2rem}
+.micro{font-size:.86rem;color:var(--ink-soft);margin:1rem 0 0}
+
+/* mini démo 3 étapes */
+.steps{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;
+       box-shadow:0 18px 50px -28px rgba(12,7,44,.35)}
+.step{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:0;padding-bottom:4px}
+.step .n{width:27px;height:27px;border-radius:50%;background:var(--lav);color:var(--blue);
+         font:700 .82rem "Space Grotesk",sans-serif;display:flex;align-items:center;
+         justify-content:center;flex:none;margin-top:2px}
+.step .n.done{background:#E3F3E8;color:#1E6B3A}
+.step h4{margin:0 0 2px;font:700 .98rem "Space Grotesk",sans-serif}
+.step p{margin:0;font-size:.89rem;color:var(--ink-soft);line-height:1.5}
+
+/* bandeau confiance */
+.trust{padding:44px 0;text-align:center;border-bottom:1px solid var(--line);background:#fff}
+.trust h2{font-size:clamp(1.45rem,3.3vw,2rem);margin-bottom:.3em}
+.trust .fr{color:var(--accent)}
+.trust p{color:var(--ink-soft);max-width:62ch;margin:0 auto 1.6em;font-size:1.02rem}
+.trust p strong{color:var(--ink)}
+.pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.pill{background:var(--lav);color:var(--blue);border-radius:999px;padding:7px 16px;
+      font-size:.84rem;font-weight:700}
+
+/* sections */
+section.pad{padding:84px 0;border-bottom:1px solid var(--line)}
+.sec-head{max-width:66ch;margin-bottom:46px}
+.sec-head p{color:var(--ink-soft);font-size:1.06rem;margin:0}
+
+/* agitation */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{border:1px solid var(--line);border-radius:16px;padding:28px;background:#fff}
+.card .tag{font:800 .72rem/1 "Space Grotesk",sans-serif;letter-spacing:.14em;
+           text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:block}
+.card h3{margin-bottom:.6em}
+.card p{font-size:.96rem;color:#3B3766;margin-bottom:.9em}
+.card .punch{font-weight:700;color:var(--ink);margin-bottom:0;font-size:1rem}
+
+/* solution */
+.feat{display:grid;grid-template-columns:64px 1fr;gap:26px;padding:38px 0;
+      border-bottom:1px solid var(--line)}
+.feat:last-of-type{border-bottom:0}
+.feat .num{font:700 2.1rem/1 "Space Grotesk",sans-serif;color:var(--accent);opacity:.85}
+.feat h3{font-size:1.42rem;margin-bottom:.45em}
+.feat p{color:#3B3766;max-width:62ch}
+.feat .punch{font-weight:700;color:var(--ink);margin-bottom:0}
+.note{border-left:4px solid var(--accent);background:var(--accent-soft);
+      border-radius:0 14px 14px 0;padding:26px 28px;margin-top:34px}
+.note h3{margin-bottom:.5em}
+.note p:last-child{margin-bottom:0}
+
+/* comparatif */
+.cmp{width:100%;border-collapse:separate;border-spacing:0;margin-top:8px;
+     border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.cmp th,.cmp td{text-align:left;padding:18px 20px;border-bottom:1px solid var(--line);
+                vertical-align:top;font-size:.97rem}
+.cmp thead th{background:var(--ink);color:#fff;font:700 .84rem/1.4 "Space Grotesk",sans-serif;
+              letter-spacing:.05em;text-transform:uppercase}
+.cmp tbody th{font-weight:700;color:var(--ink);width:24%;background:var(--wash)}
+.cmp td.them{color:var(--ink-soft);width:36%}
+.cmp td.us{width:40%;background:#FFF9F7;border-left:3px solid var(--accent);font-weight:600}
+.cmp tr:last-child th,.cmp tr:last-child td{border-bottom:0}
+.kicker{text-align:center;font-size:1.06rem;color:var(--ink-soft);margin:26px auto 0;max-width:60ch}
+.kicker em{color:var(--ink);font-style:normal;font-weight:700}
+
+/* faq */
+.faq-q{padding:34px 0;border-top:1px solid var(--line)}
+.faq-q:first-of-type{border-top:0}
+.faq-q h3{font-size:1.28rem;margin-bottom:.7em}
+.faq-q p{color:#3B3766;max-width:70ch}
+.warn{border-left:4px solid #A85B00;background:#FDF3E6;border-radius:0 12px 12px 0;
+      padding:18px 22px;margin-top:1.2em}
+.warn p{font-size:.93rem;margin:0;color:#4A3A1F}
+
+/* cta final */
+.final{background:var(--ink);color:#fff;padding:88px 0;text-align:center}
+.final h2{color:#fff;font-size:clamp(1.7rem,4.2vw,2.6rem);max-width:20ch;margin:0 auto .55em}
+.final p{color:#B9BEDC;max-width:52ch;margin:0 auto 2.2em;font-size:1.06rem}
+.final .micro{color:#8A90B8;margin-top:1.6rem}
+.after{background:var(--wash-blue);padding:52px 0;text-align:center;border-bottom:1px solid var(--line)}
+.after h3{font-size:1.3rem}
+.after p{color:var(--ink-soft);max-width:60ch;margin:0 auto 1.6em}
+
+footer{padding:34px 0 52px;font-size:.87rem;color:var(--ink-soft)}
+.foot-links{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:10px}
+footer a{color:var(--ink-soft)}
+
+@media (max-width:920px){
+  .hero-grid{grid-template-columns:1fr;gap:38px}
+  .cards{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  body{font-size:16px}
+  section.pad{padding:58px 0}
+  .feat{grid-template-columns:1fr;gap:8px}
+  .feat .num{font-size:1.6rem}
+  .cmp th,.cmp td{padding:14px 13px;font-size:.9rem}
+  .cmp tbody th{width:30%}
+  .hero{padding:52px 0 48px}
+}
+</style>
+</head>
+<body>
+
+<div class="maquette">
+  <b>MAQUETTE</b> — proposition de refonte soumise à validation. Plusieurs affirmations doivent être confirmées avant toute mise en ligne publique.
+</div>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#"><span class="mark" aria-hidden="true"></span>squarian</a>
+    <a class="btn sm" href="#final">Lancer une collecte d'essai</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ─────────────── HERO ─────────────── -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">EHPAD · CHU · Organismes financeurs · Projets multipartenaires</p>
+      <h1>Vos pièces justificatives arrivent seules.<br>Chiffrées, vérifiées, tracées.</h1>
+      <p class="sub">Rien à installer. Rien à migrer. Rien à demander à votre DSI.
+        Vos interlocuteurs n'ont <strong>aucun compte à créer</strong> : ils reçoivent un lien,
+        ils déposent, c'est terminé. Vous, vous voyez en temps réel qui a répondu —
+        et <strong>Squarian relance à votre place</strong>.</p>
+      <div class="cta-row">
+        <a class="btn lg" href="#final">Lancer une collecte d'essai — 2 minutes</a>
+        <a class="btn ghost sm" href="#solution">Voir comment ça marche</a>
+      </div>
+      <p class="micro">Sans carte bancaire · Sans engagement · Hébergé en France</p>
+    </div>
+
+    <div class="steps" aria-label="Les trois étapes d'une collecte">
+      <div class="step">
+        <span class="n done" aria-hidden="true">✓</span>
+        <div><h4>Vous créez la demande</h4>
+        <p>La liste des pièces attendues, les destinataires. Deux minutes.</p></div>
+      </div>
+      <div class="step">
+        <span class="n done" aria-hidden="true">✓</span>
+        <div><h4>Vos partenaires déposent</h4>
+        <p>Un lien, aucun compte à créer. L'identité du déposant est vérifiée.</p></div>
+      </div>
+      <div class="step">
+        <span class="n" aria-hidden="true">3</span>
+        <div><h4>Squarian relance les retardataires</h4>
+        <p>Automatiquement. Vous ne faites plus que traiter les réponses.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── CONFIANCE ─────────────── -->
+<section class="trust">
+  <div class="wrap narrow">
+    <h2>Vos données ne quittent jamais <span class="fr">la France</span>.</h2>
+    <p>Pas « l'Europe au sens large ». La France. Infrastructure Scaleway, opérateur français.
+      Vos documents sont chiffrés avant de partir de chez vous :
+      <strong>même nos équipes ne peuvent pas les lire</strong>.</p>
+    <div class="pills">
+      <span class="pill">Hébergement en France</span>
+      <span class="pill">Chiffrement de bout en bout</span>
+      <span class="pill">Conçu pour vos obligations RGPD et NIS2</span>
+      <span class="pill">Traçabilité opposable</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── AGITATION ─────────────── -->
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Ce que vous vivez aujourd'hui</p>
+      <h2>Collecter des pièces par mail, c'est un métier à temps plein.</h2>
+      <p>Sauf que ce n'est pas le vôtre.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <span class="tag">Le temps perdu</span>
+        <h3>Le mail n'a jamais été conçu pour ça</h3>
+        <p>Une demande partie. Quatre relances. Six pièces manquantes, deux versions obsolètes,
+          un fichier trop lourd rejeté par le serveur d'en face.</p>
+        <p>Et pendant ce temps, le dossier n'avance pas.</p>
+        <p class="punch">La collecte de pièces n'est pas un échange de courriels. C'est un
+          processus — et votre boîte mail ne sait pas gérer un processus.</p>
+      </article>
+
+      <article class="card">
+        <span class="tag">Le risque</span>
+        <h3>Vous ne savez pas vraiment qui vous écrit</h3>
+        <p>Une facture arrive avec un nouveau RIB. L'adresse ressemble à celle de votre
+          fournisseur. La signature aussi.</p>
+        <p>Personne, dans la chaîne, n'a vérifié que c'était bien lui.</p>
+        <p class="punch">La fraude au virement ne passe pas par une faille informatique.
+          Elle passe par une pièce jointe que personne n'a authentifiée.</p>
+      </article>
+
+      <article class="card">
+        <span class="tag">Le jour du contrôle</span>
+        <h3>Et là, il faut prouver</h3>
+        <p>Audit, litige, commissaire aux comptes, autorité de tutelle. On vous demande quelle
+          pièce a été reçue, quand, et de qui.</p>
+        <p>La réponse est dans une boîte mail. Quelque part. Peut-être chez quelqu'un qui est parti.</p>
+        <p class="punch">Un document sans horodatage ni traçabilité, ce n'est pas une preuve.
+          C'est un souvenir.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── SOLUTION ─────────────── -->
+<section class="pad" id="solution">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">La solution</p>
+      <h2>Vous demandez une fois. Vous obtenez tout. Vous pouvez le prouver.</h2>
+    </div>
+
+    <div class="feat">
+      <div class="num">01</div>
+      <div>
+        <h3>Vous demandez une fois. Squarian s'occupe du reste.</h3>
+        <p>Vous créez la liste des pièces attendues, vous désignez les destinataires, vous validez.
+          C'est fini pour vous.</p>
+        <p>Chaque interlocuteur reçoit sa demande et dépose ses documents en quelques clics,
+          sans créer de compte. <strong>S'il tarde, il est relancé automatiquement.</strong>
+          Vous suivez l'avancement sur un seul écran : qui a répondu, qui manque, quelle pièce bloque.</p>
+        <p class="punch">Vous ne relancez plus. Vous arbitrez.</p>
+      </div>
+    </div>
+
+    <div class="feat">
+      <div class="num">02</div>
+      <div>
+        <h3>Vous savez qui est en face</h3>
+        <p>Avant qu'un document n'entre chez vous, Squarian vérifie l'identité de l'organisation
+          ou de la personne qui le dépose.</p>
+        <p>Fournisseur, prestataire, bénéficiaire, porteur de projet :
+          <strong>le profil est contrôlé, pas déclaré</strong>. Les pièces d'un partenaire non
+          vérifié n'entrent pas dans votre circuit sans que vous le sachiez.</p>
+        <p class="punch">C'est la différence entre recevoir un fichier et recevoir un fichier
+          de quelqu'un.</p>
+      </div>
+    </div>
+
+    <div class="feat">
+      <div class="num">03</div>
+      <div>
+        <h3>Tout est chiffré. Tout est daté. Tout est opposable.</h3>
+        <p>Chaque dépôt, chaque consultation, chaque validation laisse une trace horodatée,
+          exportable.</p>
+        <p>Les documents sont chiffrés de bout en bout et hébergés en France. En cas de contrôle,
+          vous ne cherchez pas : <strong>vous exportez</strong>.</p>
+        <p class="punch">Vos échanges deviennent une preuve, pas un historique.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <h3>Un projet, douze partenaires, quatre financeurs — et une boîte mail qui explose</h3>
+      <p>Squarian réunit les documents <strong>et</strong> les conversations d'un projet au même
+        endroit : espace partagé, discussion tracée, droits par participant. Chacun voit ce qui
+        le concerne, et seulement ce qui le concerne.</p>
+      <p>Quand un partenaire entre ou sort du projet, vous ajustez ses accès.
+        Vous ne réexpliquez pas six mois d'historique.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── COMPARATIF ─────────────── -->
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">La comparaison</p>
+      <h2>Deux façons de collecter. Une seule tient devant un auditeur.</h2>
+    </div>
+
+    <table class="cmp">
+      <thead>
+        <tr>
+          <th scope="col">&nbsp;</th>
+          <th scope="col">Le mail et les outils de transfert grand public</th>
+          <th scope="col">Squarian</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Où sont vos documents</th>
+          <td class="them">Dans des boîtes mail, et sur des serveurs souvent hors d'Europe</td>
+          <td class="us">En France, chiffrés de bout en bout, illisibles même par nous</td>
+        </tr>
+        <tr>
+          <th scope="row">Qui relance</th>
+          <td class="them">Vous. Encore. Et encore.</td>
+          <td class="us">Le système. Vous ne faites plus que traiter les réponses</td>
+        </tr>
+        <tr>
+          <th scope="row">Qui a déposé le fichier</th>
+          <td class="them">Une adresse de courriel — rien ne dit que c'est bien elle</td>
+          <td class="us">Une identité vérifiée avant que la pièce n'entre chez vous</td>
+        </tr>
+        <tr>
+          <th scope="row">Le jour du contrôle</th>
+          <td class="them">Une recherche dans les archives, et beaucoup d'espoir</td>
+          <td class="us">Un journal horodaté, exportable en un clic</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="kicker">Ce n'est pas un outil d'envoi.
+      <em>C'est le circuit complet, de la demande à la preuve.</em></p>
+  </div>
+</section>
+
+<!-- ─────────────── FAQ ─────────────── -->
+<section class="pad">
+  <div class="wrap narrow">
+    <div class="sec-head">
+      <p class="eyebrow">Les questions qu'on nous pose</p>
+      <h2>Avant que vous ne la posiez</h2>
+    </div>
+
+    <article class="faq-q">
+      <h3>Combien ça coûte, et qu'est-ce que ça remplace ?</h3>
+      <p>Un abonnement par organisation, sans facturation au volume : vous n'êtes pas pénalisé
+        parce qu'une campagne de collecte a bien marché. Vos interlocuteurs externes ne paient
+        rien et n'ont rien à créer.</p>
+      <p>La vraie question n'est pas le prix de l'outil, c'est <strong>ce qu'il libère</strong> :
+        le temps passé à relancer, les dossiers bloqués faute d'une pièce, et le coût d'un
+        incident sur un virement frauduleux — qui se chiffre rarement en centaines d'euros.</p>
+      <p><strong>Un essai gratuit vous permet de mesurer avant de décider.</strong></p>
+    </article>
+
+    <article class="faq-q">
+      <h3>Peut-on vraiment y faire transiter nos documents sensibles ?</h3>
+      <p>Oui, et c'est précisément pour cela que Squarian existe.</p>
+      <p>Vos documents sont chiffrés <strong>avant</strong> de quitter votre poste et ne sont
+        déchiffrés que chez le destinataire. Nos équipes n'ont accès à aucun contenu en clair,
+        y compris pour une opération de maintenance. L'hébergement est assuré en France, et la
+        liste de nos sous-traitants, leur localisation et leur rôle vous sont communiqués et
+        annexés au contrat.</p>
+      <p>Sur les textes qui vous concernent — RGPD, NIS2 — notre rôle n'est pas de nous déclarer
+        conformes à votre place : c'est de vous fournir <strong>les preuves qui rendent votre
+        propre conformité démontrable</strong>.</p>
+      <div class="warn">
+        <p><strong>[Maquette — à trancher avant publication]</strong> Si des données de santé à
+          caractère personnel transitent par la plateforme, l'hébergement doit être certifié HDS.
+          C'est une obligation légale. À vérifier auprès de Scaleway pour l'offre exactement
+          utilisée, et à afficher explicitement sur cette page.</p>
+      </div>
+    </article>
+
+    <article class="faq-q">
+      <h3>Mes fournisseurs et mes bénéficiaires vont-ils y arriver ?</h3>
+      <p>C'est le point sur lequel nous avons le plus travaillé, parce que c'est celui qui fait
+        échouer les projets.</p>
+      <p><strong>Aucun compte à créer, aucun logiciel à installer, aucun mot de passe à retenir.</strong>
+        Votre interlocuteur reçoit un lien, dépose ses fichiers depuis son ordinateur ou son
+        téléphone, et reçoit une confirmation. S'il ne va pas au bout, il est relancé — sans que
+        vous ayez à y penser.</p>
+      <p>Si un partenaire bloque malgré tout, vous le voyez sur votre tableau de bord et vous
+        l'appelez. <strong>Une seule personne à appeler, au lieu de trente à relancer.</strong></p>
+    </article>
+  </div>
+</section>
+
+<!-- ─────────────── CTA FINAL ─────────────── -->
+<section class="final" id="final">
+  <div class="wrap">
+    <h2>Votre prochaine collecte commence dans deux minutes.</h2>
+    <p>Créez une demande, envoyez-la à un seul fournisseur, et regardez ce qu'il se passe.
+      Une seule collecte suffit pour savoir si ça change votre quotidien.</p>
+    <a class="btn lg" href="#">Lancer ma première collecte</a>
+    <p class="micro">Sans carte bancaire · Sans installation · Hébergé en France ·
+      Vous gardez la main sur vos données</p>
+  </div>
+</section>
+
+<section class="after">
+  <div class="wrap narrow">
+    <h3>Vous préférez en parler d'abord ?</h3>
+    <p>Nous accompagnons des structures de santé, des organismes financeurs et des porteurs de
+      projets multipartenaires. Quinze minutes suffisent pour savoir si votre cas se prête à Squarian.</p>
+    <a class="btn ghost" href="#">Réserver 15 minutes</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-links">
+      <a href="#">Accueil</a>
+      <a href="#">Mentions légales</a>
+      <a href="#">Politique de confidentialité</a>
+      <a href="#">Questions fréquentes</a>
+    </div>
+    <div>© 2026 Squarian — Échanges de données sensibles entre organisations. Hébergé en France.</div>
+  </div>
+</footer>
+
+</body>
+</html>
